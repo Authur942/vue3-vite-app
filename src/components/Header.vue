@@ -1,8 +1,11 @@
 <template>
   <div class="header">
-    <div class="collapse_btn"></div>
-    <div></div>
-    <div></div>
+    <!-- 折叠按钮 -->
+    <div class="collapse_btn">
+      <i class="el-icon-s-fold"></i><i></i>
+    </div>
+    <div class="logo">后台管理系统</div>
+    <div class="header_right"></div>
   </div>
 </template>
 

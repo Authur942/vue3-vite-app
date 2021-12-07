@@ -1,9 +1,15 @@
 import {
-  ElButton
+  ElButton,
+  ElForm,
+  ElFormItem,
+  ElInput
 } from 'element-plus'
 
 const components = [
-  ElButton
+  ElButton,
+  ElForm,
+  ElFormItem,
+  ElInput
 ]
 
 export default (app) => {
