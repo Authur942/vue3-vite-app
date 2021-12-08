@@ -1,16 +1,20 @@
 <template>
   <div class="login_wrap">
     <div class="ms_login">
-      <div class="ms_title"></div>
+      <div class="ms_title">后台管理系统</div>
       <el-form
         :model="formParams"
         :rules="formRules"
         ref="login"
         label-width="0px"
-        class="ms-content"
+        class="ms_content"
       >
-        <el-form-item prop="username">
-          <el-input v-model="formParams.userName" placeholder="请输入用户名"></el-input>
+        <el-form-item prop="userName">
+          <el-input v-model="formParams.userName" placeholder="请输入用户名">
+            <template #prepend>
+              <el-button icon="el-icon-user"></el-button>
+            </template>
+          </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input type="password" v-model="formParams.password" placeholder="请输入密码" @keyup.enter="submitForm()"></el-input>
@@ -39,7 +43,7 @@ export default {
     })
 
     const formRules = {
-      username: [
+      userName: [
         {
           required: true,
           message: "请输入用户名",
@@ -86,5 +90,29 @@ export default {
   height: 100%;
   background-image: url('../assets/img/login-bg.jpg');
   background-size: 100%;
+
+  .ms_login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 350px;
+    margin: -190px 0 0 -175px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+
+    .ms_title {
+      width: 100%;
+      line-height: 50px;
+      text-align: center;
+      font-size: 20px;
+      color: #000;
+      border-bottom: 1px solid #fff;
+    }
+
+    .ms_content {
+      padding: 30px 30px;
+    }
+  }
 }
 </style>
