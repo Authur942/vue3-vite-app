@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import InstallElementPlus from './Plugin/element'
 import './assets/icon.css'
-// import './assets/sass/reset.scss'
 import router from './router'
 import store from './store'
 import App from './App.vue'
