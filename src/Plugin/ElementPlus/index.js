@@ -2,14 +2,16 @@ import {
   ElButton,
   ElForm,
   ElFormItem,
-  ElInput
+  ElInput,
+  ElMessage
 } from 'element-plus'
 
 const components = [
   ElButton,
   ElForm,
   ElFormItem,
-  ElInput
+  ElInput,
+  ElMessage
 ]
 
 export default (app) => {
