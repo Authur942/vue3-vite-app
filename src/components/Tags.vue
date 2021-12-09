@@ -120,14 +120,23 @@ export default {
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
 
+    &:not(.active):hover {
+      background: #f8f8f8;
+    }
+    &.active {
+      color: #fff;
+      border: 1px solid #409eff;
+      background-color: #409eff;
+    }
+
     .tags_li_title {
       float: left;
       max-width: 80px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      margin: 5px;
-      color: #666;
+      margin-right: 5px;
+      color: #fff;
     }
   }
   .tags_close_box {

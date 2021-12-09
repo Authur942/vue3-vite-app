@@ -13,6 +13,9 @@ const routes = [
 			{
 				path: '/dashboard',
 				name: 'Dashboard',
+				meta: {
+					title: '系统首页'
+				},
 				component: () => import('../components/Dashboard.vue')
 			}
 		]
