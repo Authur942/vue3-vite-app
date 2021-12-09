@@ -1,9 +1,15 @@
-<script setup>
-</script>
-
 <template>
-  <div></div>
+  <div class="about">
+    <v-header />
+  </div>
 </template>
 
-<style lang='scss' scope>
-</style>
+<script>
+import vHeader from '../components/Header.vue'
+
+export default {
+  components: {
+    vHeader
+  }
+}
+</script>
