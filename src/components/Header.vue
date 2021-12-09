@@ -1,13 +1,20 @@
 <template>
   <div class="header">
     <!-- 折叠按钮 -->
-    <div class="collapse_btn" @click="collapseChage"><i class="el-icon-s-fold"></i></div>
+    <div class="collapse_btn" @click="collapseChage">
+      <i class="el-icon-s-fold" v-if="!collapse"></i>
+      <i v-else class="el-icon-s-unfold"></i>
+    </div>
     <div class="logo">后台管理系统</div>
     <div class="header_right">
       <div class="header_user_icon">
         <!-- 消息中心 -->
         <div class="btn_bell">
-          <el-tooltip effect="dark" placement="bottom" :content="message ? `有${message}条未读消息` : '消息中心'">
+          <el-tooltip
+            effect="dark"
+            placement="bottom"
+            :content="message ? `有${message}条未读消息` : '消息中心'"
+          >
             <router-link to="/tabs">
               <i class="el-icon-bell"></i>
             </router-link>
@@ -30,7 +37,9 @@
                 <el-dropdown-item>项目仓库</el-dropdown-item>
               </a>
               <el-dropdown-item command="user">个人中心</el-dropdown-item>
-              <el-dropdown-item command="loginout" divided>退出登录</el-dropdown-item>
+              <el-dropdown-item command="loginout" divided
+                >退出登录</el-dropdown-item
+              >
             </el-dropdown-menu>
           </template>
         </el-dropdown>
