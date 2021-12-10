@@ -2,9 +2,16 @@
   <div>
     <el-row :gutter="20">
       <el-col :span="8">
+        <!-- 用户名片 -->
         <el-card shadow="hover" class="mgb20" style="height: 252px">
           <div class="user_info">
-            <img src="../assets/img/avator.jpg" alt="" />
+            <img
+              src="../assets/img/avator.jpg"
+              class="user_avator"
+              alt="用户头像"
+              width="120"
+              height="120"
+            />
             <div class="user_info_cont">
               <div class="user_info_name">
                 {{ name }}
@@ -17,10 +24,11 @@
             <span>2021-9-21</span>
           </div>
           <div class="user_info_list">
-            上次登录地点
+            上次登录地点：
             <span>广州</span>
           </div>
         </el-card>
+        <!-- 语言详情 -->
         <el-card shadow="hover" style="height: 252px">
           <template #header>
             <div class="clearfix">
@@ -34,58 +42,99 @@
           <el-progress :percentage="13.7"></el-progress>HTML
           <el-progress :percentage="5.9" color="#f56c6c"></el-progress>
         </el-card>
-        <el-col :span="16">
-          <el-row :gutter="20" class="mgb20">
-            <el-col :span="8">
-              <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                <div class="grid_content grid_con_1">
-                  <i class="el-icon-user-solid grid_con_icon"></i>
-                  <div class="grid_cont_right">
-                    <div class="grid_num">1312</div>
-                    <div>用户访问量</div>
-                  </div>
+      </el-col>
+      <el-col :span="16">
+        <!-- 数据 -->
+        <el-row :gutter="20" class="mgb20">
+          <el-col :span="8">
+            <el-card shadow="hover" :body-style="{ padding: '0px' }">
+              <div class="grid_content grid_con_1">
+                <i class="el-icon-user-solid grid_con_icon"></i>
+                <div class="grid_cont_right">
+                  <div class="grid_num">1312</div>
+                  <div>用户访问量</div>
                 </div>
-              </el-card>
-            </el-col>
-            <el-col :span="8">
-              <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                <div class="grid_content grid_con_2">
-                  <i class="el-icon-message-solid grid_con_icon"></i>
-                  <div class="grid_cont_right">
-                    <div class="grid_num">312</div>
-                    <div>系统消息</div>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-            <el-col :span="8">
-              <el-card shadow="hover" :body-style="{ padding: '0px' }">
-                <div class="grid_content grid_con_3">
-                  <i class="el-icon-s-goods grid_con_icon"></i>
-                  <div class="grid_cont_right">
-                    <div class="grid_num">5312</div>
-                    <div>数量</div>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>
-          <el-card shadow="hover" style="height: 403px">
-            <template #header>
-              <div class="clearfix">
-                <span>待办事项</span>
-                <el-button style="float: right; padding: 3px 0" type="text"
-                  >添加</el-button
-                >
               </div>
-            </template>
-            <el-table :show-header="false" :data="todoList" style="width: 100%">
-              <el-table-column width="40">
-                <template #default="">
-                  <el-checkbox></el-checkbox></template></el-table-column
-            ></el-table>
-          </el-card>
-        </el-col>
+            </el-card>
+          </el-col>
+          <el-col :span="8">
+            <el-card shadow="hover" :body-style="{ padding: '0px' }">
+              <div class="grid_content grid_con_2">
+                <i class="el-icon-message-solid grid_con_icon"></i>
+                <div class="grid_cont_right">
+                  <div class="grid_num">312</div>
+                  <div>系统消息</div>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :span="8">
+            <el-card shadow="hover" :body-style="{ padding: '0px' }">
+              <div class="grid_content grid_con_3">
+                <i class="el-icon-s-goods grid_con_icon"></i>
+                <div class="grid_cont_right">
+                  <div class="grid_num">5312</div>
+                  <div>数量</div>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+        <!-- 待办事项 -->
+        <el-card shadow="hover" style="height: 403px">
+          <template #header>
+            <div class="clearfix">
+              <span>待办事项</span>
+              <el-button style="float: right; padding: 3px 0" type="text"
+                >添加</el-button
+              >
+            </div>
+          </template>
+          <el-table :show-header="false" :data="todoList" style="width: 100%">
+            <el-table-column width="40">
+              <template #default="scope">
+                <el-checkbox v-model="scope.row.status"></el-checkbox></template
+            ></el-table-column>
+            <el-table-column>
+              <template #default="scope">
+                <div
+                  class="todo_item"
+                  :class="{ todo_item_del: scope.row.status }"
+                >
+                  {{ scope.row.title }}
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column width="60">
+              <template>
+                <i class="el-icon-edit"></i>
+                <i class="el-icon-delete"></i>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <el-card shadow="hover">
+          <schart
+            ref="bar"
+            class="schart"
+            canvasId="bar"
+            :options="options"
+          ></schart>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card shadow="hover">
+          <schart
+            ref="line"
+            class="schart"
+            canvasId="line"
+            :options="options2"
+          ></schart>
+        </el-card>
       </el-col>
     </el-row>
   </div>
@@ -214,3 +263,110 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.el-row {
+  margin-bottom: 20px;
+}
+
+.grid_content {
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.grid_cont_right {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+
+.grid_num {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.grid_con_icon {
+  font-size: 50px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+}
+
+.grid_con_1 .grid_con_icon {
+  background: rgb(45, 140, 240);
+}
+
+.grid_con_1 .grid_num {
+  color: rgb(45, 140, 240);
+}
+
+.grid_con_2 .grid_con_icon {
+  background: rgb(100, 213, 114);
+}
+
+.grid_con_2 .grid_num {
+  color: rgb(45, 140, 240);
+}
+
+.grid_con_3 .grid_con_icon {
+  background: rgb(242, 94, 67);
+}
+
+.grid_con_3 .grid_num {
+  color: rgb(242, 94, 67);
+}
+.mgb20 {
+  margin-bottom: 20px;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+
+  .user_avator {
+    border-radius: 50%;
+  }
+
+  .user_info_cont {
+    padding-left: 50px;
+    flex: 1;
+    font-size: 14px;
+    color: #999;
+
+    & div:first-child {
+      font-size: 30px;
+      color: #222;
+    }
+  }
+}
+
+.user_info_list {
+  font-size: 14px;
+  color: #999;
+  line-height: 25px;
+
+  span {
+    margin-left: 70px;
+  }
+}
+.todo_item {
+  font-size: 14px;
+}
+
+.todo_item_del {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.schart {
+  width: 100%;
+  height: 300px;
+}
+</style>
