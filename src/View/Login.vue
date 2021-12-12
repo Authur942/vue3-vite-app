@@ -43,7 +43,8 @@ import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 export default {
-  setup () {
+  name: 'Login',
+  setup() {
     const router = useRouter()
 
     const formParams = reactive({
